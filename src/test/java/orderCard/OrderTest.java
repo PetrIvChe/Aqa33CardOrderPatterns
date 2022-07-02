@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class OrderTest {
     @Test
     public void shouldOrderACardHappyPass() {
-        //Configuration.headless = true;
+        Configuration.headless = true;
 
         open("http://localhost:9999/");
         $("[data-test-id='city']  input").setValue(DataGenerator.generateCity());
@@ -25,14 +25,12 @@ public class OrderTest {
         $("[data-test-id='agreement']").click();
         $(".grid-col button").click();
         $(withText("Успешно!")).shouldBe(visible);
-        $(".notification__content").shouldBe(visible)
-                .shouldHave(exactText("Встреча успешно запланирована на " + planningMeetingDate));
+        $(".notification__content").shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + planningMeetingDate));
         $("[data-test-id='date']  input").doubleClick().sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String replanMeetingDate = DataGenerator.generateDate(3);
         $("[data-test-id='date']  input").setValue(replanMeetingDate);
         $(".grid-col button").click();
-        $("[data-test-id='replan-notification'] .notification__content")
-                .shouldBe(visible).shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
+        $("[data-test-id='replan-notification'] .notification__content").shouldBe(visible).shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
         $(".notification_status_error .button").click();
         $(withText("Успешно!")).shouldBe(visible);
         $("[data-test-id='success-notification'] .notification__content").shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + replanMeetingDate));
