@@ -35,7 +35,5 @@ public class OrderTest {
         $(withText("Успешно!")).shouldBe(visible);
         $("[data-test-id='success-notification'] .notification__content").shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + replanMeetingDate));
     }
-
-
 }
 
