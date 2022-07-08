@@ -8,7 +8,7 @@ plugins {
 group 'ru.netology'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = '11'
+sourceCompatibility = 11
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
@@ -20,9 +20,8 @@ repositories {
 dependencies {
     testImplementation 'org.projectlombok:lombok:1.18.24'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    testImplementation 'com.codeborne:selenide:6.6.6'
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
     implementation 'com.codeborne:selenide:6.6.6'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
 
 }
 
